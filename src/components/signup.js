@@ -1,10 +1,15 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 const Signup=()=>{
     const [name,setName]=useState("");
     const[email,setEmail]=useState("");
     const[password,setPassword]=useState("");
     const navigate=useNavigate();
+    useEffect(() => {
+      const auth=localStorage.getItem('user');
+      if(auth){
+      navigate('/');}
+    }, [])
     const collectData = async () => {
       
             console.warn(name, email, password);
@@ -21,6 +26,7 @@ const Signup=()=>{
            
             result = await result.json();
             console.warn(result);
+            localStorage.setItem("user",JSON.stringify(result))
             navigate('/')//if you want to redirect it to home page
         } 
     
