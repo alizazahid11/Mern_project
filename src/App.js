@@ -1,31 +1,28 @@
-import { BrowserRouter,Routes,Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Nav from './components/Navbar';
 import Footer from './components/footer';
-import Signup from './components/signup'
+import Signup from './components/signup';
+
 function App() {
   return (
-<>
-<div className="App">
-  <BrowserRouter>
-
-<Nav/>
-{/* adding route to project (means content inside the links) */}
-<Routes>
-  <Route path="/" ></Route>
-  <Route path="/add" element={<h1>Add product component</h1>}></Route>
-  <Route path="/update" element={<h1>update component</h1>}></Route>
-  <Route path="/logout" element={<h1>logout component</h1>}></Route>
-  <Route path="/profile" element={<h1>profile component</h1>}></Route>
-  <Route path="/signup" element={<Signup/>}></Route>
-
-</Routes>
-
-</BrowserRouter>
-<Signup/>
-<Footer/>
-</div>
-</>
+    <>
+      <div className="App">
+        <Router>
+          <Nav />
+          {/* Adding routes to the project (content inside the links) */}
+          <Routes>
+            <Route path="/" element={<h1>Home component</h1>} />
+            <Route path="/add" element={<h1>Add product component</h1>} />
+            <Route path="/update" element={<h1>Update component</h1>} />
+            <Route path="/logout" element={<h1>Logout component</h1>} />
+            <Route path="/profile" element={<h1>Profile component</h1>} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </div>
+    </>
   );
 }
 

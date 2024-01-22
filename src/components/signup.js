@@ -1,12 +1,29 @@
 import React,{useState} from 'react';
-
+import {useNavigate} from 'react-router-dom';
 const Signup=()=>{
     const [name,setName]=useState("");
     const[email,setEmail]=useState("");
     const[password,setPassword]=useState("");
-    const collectData=()=>{
-        console.warn(name,email,password)
-    }
+    const navigate=useNavigate();
+    const collectData = async () => {
+      
+            console.warn(name, email, password);
+            //integrate signup api in react 
+            let result = await fetch("http://localhost:5000/register", {
+                method: 'post',
+                body: JSON.stringify({ name, email, password }),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',  // Include credentials in the request
+            });
+    
+           
+            result = await result.json();
+            console.warn(result);
+            navigate('/')//if you want to redirect it to home page
+        } 
+    
     return(
         <div className="register">
             <h1>Register</h1>
