@@ -19,6 +19,24 @@
   width: 100%;
   text-align: center;
 }
+.appButton{
+  margin: 20px;
+  width: 150px;
+  padding: 10px;
+  background-color: #61dafb;
+  border: solid 1px;
+  cursor: pointer;
+}
+.register{
+  margin-left: 30%;
+}
+.inputBox{
+  padding: 7px;
+  display: block;
+  border: 1px solid #61dafb;
+  width:300px;
+  margin:20px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
