@@ -12,9 +12,9 @@ const Signup=()=>{
     }, [])
     const collectData = async () => {
       
-            console.warn(name, email, password);
+           
             //integrate signup api in react 
-            let result = await fetch("http://localhost:5000/register", {
+            let result = await fetch("http://localhost:8000/register", {
                 method: 'post',
                 body: JSON.stringify({ name, email, password }),
                 headers: {

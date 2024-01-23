@@ -37,6 +37,10 @@
   width:300px;
   margin:20px;
 }
+.login{
+  margin-left: 30%;
+  margin-top: 100px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
