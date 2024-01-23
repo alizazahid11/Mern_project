@@ -4,6 +4,12 @@ const Login=()=>{
     const[email,setEmail]=useState("");
     const[password,setPassword]=useState("");
     const navigate=useNavigate();
+    //so it will not navigate to /login after login in 
+    useEffect(() => {
+        const auth=localStorage.getItem('user');
+        if(auth){
+        navigate('/');}
+      }, [])
     const handlelogin=async()=>{
         console.warn(email,password)
       //integrate Login api in react 

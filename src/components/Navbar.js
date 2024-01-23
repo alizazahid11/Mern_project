@@ -18,12 +18,13 @@ const Nav=()=>{
               <li><Link to="/update">Update Products</Link></li>
       
               <li><Link to="/profile">Profile</Link></li>
-              {auth ? 
-                <li><Link onClick={logout} to="/signup">Logout</Link></li>
-              
-                :<li><Link to="/signup">Signup</Link></li>
-                }
-                  <li><Link to="/login">Login</Link></li>
+             {
+                    auth? <li><Link onClick={logout} to="/signup">Logout</Link></li>
+                    :<><li><Link to="/signup">Signup</Link></li>
+                      <li><Link to="/login">Login</Link></li>
+
+                    </>
+                  }
             </ul>
           </div>
         </>
