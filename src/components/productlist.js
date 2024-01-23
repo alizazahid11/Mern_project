@@ -24,11 +24,28 @@ const deleteproduct=async(id)=>{
     }
     
 }
-
+const searchhandle = async (event) => {
+    
+      let key = event.target.value;
+      if(key){
+        let result = await fetch(`http://localhost:8000/search/${key}`);
+        result = await result.json();
+        if (result) {
+          setProducts(result);
+        }
+      }
+   
+      else{
+        getProduct();
+      }
+  
+  };
+  
     return(
         <>
        <div className="product-list">
         <h3>Product list</h3>
+        <input type="" className="search" placeholder="search product" onChange={searchhandle}></input>
         <ul>
         <li>S. No</li>
         <li>Name</li>
@@ -38,7 +55,7 @@ const deleteproduct=async(id)=>{
   
     </ul>
     {
-        products.map((item,index)=><ul key={item._id}>
+      products.length>0?  products.map((item,index)=><ul key={item._id}>
         <li>{index+1}</li>
         <li>{item.name}</li>
         <li>{item.price}</li>
@@ -48,6 +65,7 @@ const deleteproduct=async(id)=>{
         </li>
   
     </ul>)
+    :<h1>no Result found</h1>
     }
         </div>
         </>
