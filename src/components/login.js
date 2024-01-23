@@ -1,9 +1,31 @@
 import React,{useState,useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 const Login=()=>{
     const[email,setEmail]=useState("");
     const[password,setPassword]=useState("");
-    const handlelogin=()=>{
+    const navigate=useNavigate();
+    const handlelogin=async()=>{
         console.warn(email,password)
+      //integrate Login api in react 
+      let result = await fetch("http://localhost:8000/login", {
+        method: 'post',
+        body: JSON.stringify({  email, password }),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',  // Include credentials in the request
+    });
+
+   
+    result = await result.json();//converted result in json
+    console.warn(result);
+    if(result.name){
+          localStorage.setItem('user',JSON.stringify(result));
+          navigate("/")
+    }
+    else{
+        alert("please enter correct details")
+    }
     }
     return(
         <div className="login">
