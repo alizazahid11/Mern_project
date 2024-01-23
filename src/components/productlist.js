@@ -1,6 +1,9 @@
 import React,{useState,useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom'
 const ProductList=()=>{
     const[products,setProducts]=useState([]);
+    const navigate=useNavigate();
     useEffect(() => {
     getProduct();
     }, []);
@@ -40,7 +43,9 @@ const deleteproduct=async(id)=>{
         <li>{item.name}</li>
         <li>{item.price}</li>
         <li>{item.category}</li>
-        <li><button onClick={()=>deleteproduct(item._id)}>Delete</button></li>
+        <li><button onClick={()=>deleteproduct(item._id)}>Delete</button>
+        <Link to={"/update/"+item._id}>Update</Link>
+        </li>
   
     </ul>)
     }
