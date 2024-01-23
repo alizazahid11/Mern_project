@@ -26,7 +26,8 @@ const Signup=()=>{
            
             result = await result.json();
             console.warn(result);
-            localStorage.setItem("user",JSON.stringify(result))
+            localStorage.setItem("user",JSON.stringify(result.result))
+            localStorage.setItem("token",JSON.stringify(result.auth))
             navigate('/')//if you want to redirect it to home page
         } 
     
