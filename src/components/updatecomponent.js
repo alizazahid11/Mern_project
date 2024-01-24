@@ -14,7 +14,11 @@ useEffect(() => {
 }, [])
 const getproductdetails=async()=>{
  console.log(params)
-    let result=await fetch(`http://localhost:8000/product/${params.id}`)
+    let result=await fetch(`http://localhost:8000/product/${params.id}`,{
+      headers:{
+        authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
+    }
+    })
     result = await result.json();//converted result in json
     console.log(result)
     setName(result.name);
@@ -31,7 +35,8 @@ const updateProduct = async () => {
       method: 'put',
       body: JSON.stringify({ name, price, category, company }),
       headers: {
-        'Content-Type': 'Application/json'
+        'Content-Type': 'Application/json',
+        authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
       },
       credentials: 'include',  // Include credentials in the request
     });
