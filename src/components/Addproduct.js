@@ -30,6 +30,7 @@ const Addproduct=()=>{
 
    
     result = await result.json();//converted result in json
+    
     console.warn(result)
     }
     return(
